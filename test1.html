@@ -3,9 +3,11 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
         <title>main</title>
     </head>
     <style>
+        @media(min-width:901px){
         body{
            display: block;
            margin: 0;
@@ -63,6 +65,116 @@
             text-align: center;
             margin-top: 45px;
         }
+    }
+    @media(max-width:600px){
+        body{
+           background-color: rgb(32, 32, 32);
+           display: block;
+           margin: 0;
+           text-align: center;
+        }
+        .header{
+            display: flex;
+            background-color:rgb(32, 32, 32);
+            color: white;
+            text-align: center;
+        }
+        .text1{
+            position: relative;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            left: 30px;
+            font-family:sans-serif
+            
+        }
+        hr{
+            border-top: 2px solid grey ;
+            margin:1px ;
+        }
+        h1{
+            color: white;
+            margin-top: 40px; 
+            text-align: center;
+        }
+        .tab1{
+            background-color: rgb(63, 63, 63);
+            border: 2px solid rgb(185, 179, 179);
+            width: 80vw;
+            height: 20vh;
+            border-radius: 10px;
+            margin: 40px auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        #icon1{
+            position: absolute;
+            top:32%;
+            left: 15%;
+            font-size: 60px;
+            color: rgb(105, 105, 255);
+        }
+        .tab1text{
+            top: -15%;
+            font-size: 20px;
+            font-family: sans-serif;
+            font-weight: bold;
+            color: rgb(79, 138, 248);
+        }
+        .tab1explain{
+            font-size: 17px;
+            color: white;
+            text-align: left;
+            top:-30%;
+            left: 30%;
+            font-family:sans-serif;
+        }
+
+        .tab2{
+            background-color: rgb(63, 63, 63);
+            border: 2px solid rgb(185, 179, 179);
+            width: 80vw;
+            height: 20vh;
+            border-radius: 10px;
+            margin: 40px auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .tab2text{
+            top: -20%;
+            left: 5%;
+            font-size: 20px;
+            font-family: sans-serif;
+            font-weight: bold;
+            color: rgb(79, 138, 248);
+        }
+        #icon2{
+            position: absolute;
+            top:59%;
+            left: 15%;
+            font-size: 60px;
+            color: rgb(105, 105, 255);
+        }
+        .tab2explain{
+            font-size: 17px;
+            color: white;
+            text-align: left;
+            top:-33%;
+            left: 28%;
+            font-family:sans-serif;
+        }
+        .tab3{
+            border: 2px solid rgb(185, 179, 179);
+            width: 80vw;
+            height: 20vh;
+            border-radius: 10px;
+            margin: auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        p{
+            position: relative;
+            text-align: center;
+            margin-top: 45px;
+        }
+    }
     </style>
     <body>
         <div class="header">
@@ -74,10 +186,16 @@
         </div>
 
         <div class="tab1">
-            <a href="Tab1.html"><p>タブの内容</p></a>
+            <a href="Tab1.html"><p class="tab1text">Notifications</p></a>
+            <span class="material-icons" id="icon1">notifications_active</span>
+            <p class='tab1explain'>You can check information <br>about disease that is detected<br> every morning.  </p>
+
         </div>
         <div class="tab2">
-            <a href="Tab2.html"><p>タブの内容</p></a>
+            <a href="Tab2.html"><p class="tab2text">Disease Detection</p></a>
+            <span class="material-icons" id="icon2">photo_library</span>
+            <p class="tab2explain">DL model detect leaf disease<br> from images or videos.<br>Try to upload your file.
+            </p>
         </div>
         <div class="tab3">
             <a href="Tab3.html"><p>タブの内容</p></a>
