@@ -47,7 +47,7 @@
             #resultimage{
                 width: 400px;
                 height: 400px;
-                display: none;
+                display: block;
                 margin: auto;
             }
         }
@@ -65,45 +65,45 @@
          <br>
          <button onclick="sendfile()">send</button>
          <p id="output"></p>
-         <img id="resultimage">
+         <img src=url id="resultimage">
         </div>
     </body>
     <script>
         async function sendfile() {
-            let input=document.getElementById('selectfile');
-            let output=document.getElementById('output')
-            let file=input.files[0];
-            if (!file) {
-                alert("画像を選択してください！");
-                return;
-            }
+    let input = document.getElementById('selectfile');
+    let output = document.getElementById('output');
+    let file = input.files[0];
 
-            let formData = new FormData();
-            formData.append("file", file);
+    if (!file) {
+        alert("画像を選択してください！");
+        return;
+    }
 
-            fetch("'https://backend-q718.onrender.com/upload", {
-                method: "POST",
-                body: formData
-            })
-            .then(response => {
-        if (response.headers.get("Content-Type").includes("image")) {
-            return response.blob();  // 画像を受信
-        } else {
-            return response.json();  // テキスト (JSON) を受信
-        }
-    })
-    .then(data => {
-        if (data instanceof Blob) {
-            let img=document.getElementById("resultimage");
+    let formData = new FormData();
+    formData.append("file", file);
+
+    try {
+        let response = await fetch("https://backend-q718.onrender.com/upload", {
+            method: "POST",
+            body: formData
+        });
+
+        console.log("Response Status:", response.status);  // レスポンスのステータスコードをログに表示
+        console.log("Response Headers:", response.headers);  // レスポンスヘッダを表示
+
+        if (response.ok) {
+            let data = await response.blob();  // 画像を受信
+            let img = document.getElementById("resultimage");
             let url = URL.createObjectURL(data);
-            img.src=url;
-            img.style.display='block'
+            img.style.display = 'block';
         } else {
+            const data = await response.json();  // テキスト (JSON) を受信
             alert("サーバーからの応答: " + data.message);
         }
-    })
-    .catch(error => console.error("エラー:", error));
-            
-        }
+    } catch (error) {
+        console.error("エラー:", error);
+    }
+}
+
     </script>
 </html>
