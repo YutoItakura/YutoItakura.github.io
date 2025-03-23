@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang=ja>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
+        <title>main</title>
+    </head>
+    <style>
+        @media(min-width:600px){
+        body{
+           background-color: rgb(32, 32, 32);
+           display: block;
+           margin: 0;
+           text-align: center;
+        }
+        .header{
+            background-color:rgb(32, 32, 32);
+            display: flex;
+            color: white;
+            text-align: center;
+        }
+        .text1{
+            position: relative;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            left: 30px;
+            font-family:sans-serif
+            
+        }
+        hr{
+            border-top: 2px solid grey ;
+            margin:1px ;
+        }
+        h1{
+            color: white;
+            margin-top: 40px; 
+            text-align: center;
+        }
+        .tab1{
+            position: relative;
+            background-color: rgb(63, 63, 63);
+            border: 2px solid rgb(185, 179, 179);
+            width: 80vw;
+            height:24vh;
+            border-radius: 10px;
+            margin: 40px auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        #icon1{
+            position: absolute;
+            top:40px;
+            left: 45px;
+            font-size: 60px;
+            color: rgb(105, 105, 255);
+        }
+        .tab1text{
+            position: absolute;
+            top: -10%;
+            margin-left: 150px;
+            font-size: 4vmin;
+            font-family: sans-serif;
+            font-weight: bold;
+            color: rgb(79, 138, 248);
+        }
+        .tab1explain{
+            position: absolute;
+            font-size: 3vmin;
+            color: white;
+            text-align: left;
+            top:20%;
+            margin-top: 30px;
+            margin-left: 150px;
+            font-family:sans-serif;
+            margin-right: 50px;
+        }
+        .tab2{
+            position: relative;
+            background-color: rgb(63, 63, 63);
+            border: 2px solid rgb(185, 179, 179);
+            width: 80vw;
+            height:24vh;
+            border-radius: 10px;
+            margin: 40px auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        #icon2{
+            position: absolute;
+            top:40px;
+            left: 45px;
+            font-size: 60px;
+            color: rgb(105, 105, 255);
+        }
+        .tab2text{
+            position: absolute;
+            top: -10%;
+            margin-left: 150px;
+            font-size: 4vmin;
+            font-family: sans-serif;
+            font-weight: bold;
+            color: rgb(79, 138, 248);
+        }
+        .tab2explain{
+            position: absolute;
+            font-size: 3vmin;
+            color: white;
+            text-align: left;
+            top:20%;
+            margin-top: 30px;
+            margin-left: 150px;
+            font-family:sans-serif;
+            margin-right: 50px;
+        }
+        .tab3{
+            position: relative;
+            background-color: rgb(63, 63, 63);
+            border: 2px solid rgb(185, 179, 179);
+            width: 80vw;
+            height:24vh;
+            border-radius: 10px;
+            margin: 40px auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        #icon3{
+            position: absolute;
+            top:40px;
+            left: 45px;
+            font-size: 60px;
+            color: rgb(105, 105, 255);
+        }
+        .tab3text{
+            position: absolute;
+            top: -10%;
+            margin-left: 150px;
+            font-size: 4vmin;
+            font-family: sans-serif;
+            font-weight: bold;
+            color: rgb(79, 138, 248);
+        }
+        .tab3explain{
+            position: absolute;
+            font-size: 3vmin;
+            color: white;
+            text-align: left;
+            top:20%;
+            margin-top: 30px;
+            margin-left: 150px;
+            font-family:sans-serif;
+            margin-right: 50px;
+        }
+
+        }
+    @media(max-width:600px){
+        body{
+           background-color: rgb(32, 32, 32);
+           display: block;
+           margin: 0;
+           text-align: center;
+        }
+        .header{
+            display: flex;
+            background-color:rgb(32, 32, 32);
+            color: white;
+            text-align: center;
+        }
+        .text1{
+            position: relative;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            left: 30px;
+            font-family:sans-serif       
+        }
+        hr{
+            border-top: 2px solid grey ;
+            margin:1px ;
+        }
+        h1{
+            color: white;
+            margin-top: 40px; 
+            text-align: center;
+        }
+        .tab1{
+            position: relative;
+            background-color: rgb(63, 63, 63);
+            border: 2px solid rgb(185, 179, 179);
+            width: 80vw;
+            height:24vh;
+            border-radius: 10px;
+            margin: 40px auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        #icon1{
+            position: absolute;
+            top:50px;
+            left: 30px;
+            font-size: 60px;
+            color: rgb(105, 105, 255);
+        }
+        .tab1text{
+            position: absolute;
+            top: -3%;
+            font-size: 20px;
+            margin-left: 120px;
+            font-family: sans-serif;
+            font-weight: bold;
+            color: rgb(79, 138, 248);
+        }
+        .tab1explain{
+            position: absolute;
+            font-size: 17px;
+            color: white;
+            text-align: left;
+            top:20%;
+            margin-left: 120px;
+            margin-right: 20px;
+            font-family:sans-serif;
+        }
+
+        .tab2{
+            position: relative;
+            background-color: rgb(63, 63, 63);
+            border: 2px solid rgb(185, 179, 179);
+            width: 80vw;
+            height:24vh;
+            border-radius: 10px;
+            margin: 40px auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        #icon2{
+            position: absolute;
+            top:50px;
+            left: 30px;
+            font-size: 60px;
+            color: rgb(105, 105, 255);
+        }
+        .tab2text{
+            position: absolute;
+            top: -3%;
+            font-size: 20px;
+            margin-left: 120px;
+            font-family: sans-serif;
+            font-weight: bold;
+            color: rgb(79, 138, 248);
+        }
+        .tab2explain{
+            position: absolute;
+            font-size: 17px;
+            color: white;
+            text-align: left;
+            top:20%;
+            margin-left: 120px;
+            margin-right: 20px;
+            font-family:sans-serif;
+        }
+        .tab3{
+            position: relative;
+            background-color: rgb(63, 63, 63);
+            border: 2px solid rgb(185, 179, 179);
+            width: 80vw;
+            height:24vh;
+            border-radius: 10px;
+            margin: 40px auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        #icon3{
+            position: absolute;
+            top:50px;
+            left: 30px;
+            font-size: 60px;
+            color: rgb(105, 105, 255);
+        }
+        .tab3text{
+            position: absolute;
+            top: -3%;
+            font-size: 20px;
+            margin-left: 120px;
+            font-family: sans-serif;
+            font-weight: bold;
+            color: rgb(79, 138, 248);
+        }
+        .tab3explain{
+            position: absolute;
+            font-size: 17px;
+            color: white;
+            text-align: left;
+            top:20%;
+            margin-left: 120px;
+            margin-right: 20px;
+            font-family:sans-serif;
+        }
+    }
+    </style>
+    <body>
+        <div class="header">
+            <p class="text1">Home</p>
+        </div>
+        <hr>
+        <div>
+        <h1>Home</h1>
+        </div>
+
+        <div class="tab1">
+            <a href="Tab1.html"><p class="tab1text">Notifications</p></a>
+            <span class="material-icons" id="icon1">notifications_active</span>
+            <p class='tab1explain'>You can check information about disease that is detected every morning.  </p>
+
+        </div>
+        <div class="tab2">
+            <a href="Tab2.html"><p class="tab2text">Disease Detection</p></a>
+            <span class="material-icons" id="icon2">photo_library</span>
+            <p class="tab2explain">DL model detect leaf disease from images or videos.<br>Try to upload your file.</p>
+        </div>
+        <div class="tab3">
+            <a href="Tab3.html"><p class="tab3text">Spraying System</p></a>
+            <span class="material-icons" id="icon3">water_drop</span>
+            <p class="tab3explain">Spraying pesticides on apple orchard to push a button.</p>
+        </div>
+        
+    </body>
+</html>
