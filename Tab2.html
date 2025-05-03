@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
+        <title>Tab2</title>
+    </head>
+    <style>
+            body{
+            background-color: rgb(32, 32, 32);
+            margin: 0;
+            text-align: center;
+            color: white;
+            font-family: sans-serif;
+        }
+
+        .header {
+            display: flex;
+            background-color: rgb(32, 32, 32);
+            padding: 10px;
+        }
+
+        .headertext {
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 30px;
+        }
+
+        hr {
+            border-top: 2px solid grey;
+            margin: 1px;
+        }
+
+        h1 {
+            margin: 40px;
+        }
+
+        button {
+            border-radius: 5px;
+            height: 30px;
+            width: 100px;
+            margin: 20px;
+            cursor: pointer;
+        }
+
+        .selectfile {
+            margin-top: 10px;
+        }
+
+        .btn-border-bottom {
+            display: inline-block;
+            padding: 0.25em 0;
+            text-decoration: none;
+            color: white;
+            position: absolute;
+            top: 15px;
+            right: 20px;
+        }
+
+
+        .btn-border-bottom:before {
+            position: absolute;
+            content: '';
+            width: 6.5vh;
+            height: 4px;
+            top: 100%;
+            left: 0;
+            border-radius: 3px;
+            background: white;
+            transition: .2s;
+        }
+
+        .btn-border-bottom:hover:before {
+            top: calc(100% - 3px);
+        }
+
+        .drawer {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #333;
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 60px;
+        }
+
+        .drawer a {
+            padding: 8px;
+            text-decoration: none;
+            font-size: 20px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .drawer a:hover {
+            background-color: #575757;
+        }
+
+        .drawer-open {
+            width: 50%;
+        }
+
+        #resultimage, #resultvideo {
+            width: 400px;
+            height: auto;
+            margin: 20px auto;
+            display: none;
+        }
+
+
+        @media (max-width: 600px) {
+    .headertext {
+        font-size: 16px;
+        margin-left: 15px;
+    }
+
+    h1 {
+        font-size: 18px;
+        margin: 20px;
+    }
+    .selectfile{
+        text-align: center;
+    }
+
+    button {
+        width: 80px;
+        height: 28px;
+        font-size: 14px;
+    }
+
+    .btn-border-bottom {
+        font-size: 14px;
+        top: 15px;
+        right: 30px;
+    }
+
+    .btn-border-bottom:before {
+        width: 40px;
+    }
+
+    .drawer a {
+        font-size: 18px;
+        padding: 6px;
+    }
+
+    .drawer-open {
+        width: 50%;
+    }
+
+    #resultimage, #resultvideo {
+        width: 90%;
+        max-width: 100%;
+    }
+}
+    </style>
+    <body>
+        <div class="header">
+            <p class="headertext">Disease Detection</p>
+        </div>
+        <a href="#" class="btn-border-bottom" onclick="togglemenu()">menu</a>
+        <div id="drawer" class="drawer">
+            <a href="#" onclick="togglemenu()">Close</a>
+            <a href="test1.html">Home</a>
+            <a href="Tab1.html">Notifications</a>
+            <a href="Tab3.html">Spraying System</a>
+
+        </div>
+        <hr>
+        <div>
+         <h1>Input  image or video file</h1>
+        </div>
+        <div>
+         <input type="file" class="selectfile" id="selectfile" accept="images/*,videos/*" capture="enviroment">
+         <br>
+         <button onclick="sendfile()">send</button>
+         <p id="output"></p>
+         <img src=url id="resultimage" >
+         <video src=url id="resultvideo">
+        </div>
+    </body>
+    <script>
+        async function sendfile() {
+    let input = document.getElementById('selectfile');
+    let output = document.getElementById('output');
+    let file = input.files[0];
+
+    if (!file) {
+        alert("画像を選択してください！");
+        return;
+    }
+
+    let formData = new FormData();
+    formData.append("file", file);
+
+    try {
+        let response = await fetch("http://133.51.86.66:5000/upload", {
+            method: "POST",
+            body: formData
+        });
+
+        console.log("Response Status:", response.status);  // レスポンスのステータスコードをログに表示
+        console.log("Response Headers:", response.headers);  // レスポンスヘッダを表示
+
+        if (response.ok) {
+            let data = await response.blob();  // 画像を受信
+            let ContentType= response.headers.get("Content-Type");
+            if(ContentType.startsWith("image/")){
+               let img = document.getElementById("resultimage");
+               let url = URL.createObjectURL(data);
+               img.src=url;
+               img.style.display='block'
+            }
+            if(ContentType.startsWith("video/")){
+                let video=document.getElementById("resultvideo");
+                let url=URL.createObjectURL(data);
+                video.src=url;
+                video.style.display='block';
+                video.controls=true;
+                video.load();
+            }
+        } else {
+            const data = await response.json();  // テキスト (JSON) を受信
+            alert("サーバーからの応答: " + data.message);
+        }
+    } catch (error) {
+        console.error("エラー:", error);
+    }
+}
+        function togglemenu(){
+        const drawer=document.getElementById('drawer');
+        drawer.classList.toggle('drawer-open');
+        }
+
+    </script>
+</html>

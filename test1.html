@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang=ja>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
+        <title>main</title>
+    </head>
+    <style>
+        @media(min-width:600px){
+        body{
+           background-color: rgb(32, 32, 32);
+           display: block;
+           margin: 0;
+           text-align: center;
+        }
+        .header{
+            background-color:rgb(32, 32, 32);
+            display: flex;
+            color: white;
+            text-align: center;
+        }
+        .text1{
+            position: relative;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            left: 30px;
+            font-family:sans-serif
+            
+        }
+        hr{
+            border-top: 2px solid grey ;
+            margin: 1px;
+        }
+        h1{
+            color: white;
+            font-size: 9vmin;
+            margin-top: 60px; 
+            text-align: center;
+        }
+        .tab1{
+            position: relative;
+            background-color: rgb(63, 63, 63);
+            border: 2px solid rgb(185, 179, 179);
+            width: 80vw;
+            height:24vh;
+            border-radius: 10px;
+            margin: 40px auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        #icon1{
+            position: absolute;
+            top:6vh;
+            left: 45px;
+            font-size: 12vmin;
+            color: rgb(105, 105, 255);
+        }
+        .tab1text{
+            position: absolute;
+            top: -10%;
+            margin-left: 180px;
+            font-size: 4vmin;
+            font-family: sans-serif;
+            font-weight: bold;
+            color: rgb(79, 138, 248);
+        }
+        .tab1explain{
+            position: absolute;
+            font-size: 3vmin;
+            color: white;
+            text-align: left;
+            top:20%;
+            margin-top: 30px;
+            margin-left: 180px;
+            font-family:sans-serif;
+            margin-right: 50px;
+        }
+        .tab2{
+            position: relative;
+            background-color: rgb(63, 63, 63);
+            border: 2px solid rgb(185, 179, 179);
+            width: 80vw;
+            height:24vh;
+            border-radius: 10px;
+            margin: 40px auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        #icon2{
+            position: absolute;
+            top:6vh;
+            left: 45px;
+            font-size: 12vmin;
+            color: rgb(105, 105, 255);
+        }
+        .tab2text{
+            position: absolute;
+            top: -10%;
+            margin-left: 180px;
+            font-size: 4vmin;
+            font-family: sans-serif;
+            font-weight: bold;
+            color: rgb(79, 138, 248);
+        }
+        .tab2explain{
+            position: absolute;
+            font-size: 3vmin;
+            color: white;
+            text-align: left;
+            top:20%;
+            margin-top: 30px;
+            margin-left: 180px;
+            font-family:sans-serif;
+            margin-right: 50px;
+        }
+        .tab3{
+            position: relative;
+            background-color: rgb(63, 63, 63);
+            border: 2px solid rgb(185, 179, 179);
+            width: 80vw;
+            height:24vh;
+            border-radius: 10px;
+            margin: 40px auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        #icon3{
+            position: absolute;
+            top:6vh;
+            left: 45px;
+            font-size: 12vmin;
+            color: rgb(105, 105, 255);
+        }
+        .tab3text{
+            position: absolute;
+            top: -10%;
+            margin-left: 180px;
+            font-size: 4vmin;
+            font-family: sans-serif;
+            font-weight: bold;
+            color: rgb(79, 138, 248);
+        }
+        .tab3explain{
+            position: absolute;
+            font-size: 3vmin;
+            color: white;
+            text-align: left;
+            top:20%;
+            margin-top: 30px;
+            margin-left: 180px;
+            font-family:sans-serif;
+            margin-right: 50px;
+        }
+        li{
+            list-style: none;
+        }
+        .slider-container {
+           position: relative;
+           overflow: hidden;
+           width: 100%;
+           height: 40vmax;
+        }
+        .slider-container::after{
+            content: "";         /* 疑似要素に必須 */
+            width: 100%;         /* 幅いっぱい */
+            height: 100%;        /* 高さいっぱい */
+            display: block;      /* 高さを指定するためにブロック要素にする */
+            background-image: linear-gradient(180deg,transparent 0 50%, rgb(32, 32, 32) 100%); /* 徐々に透明にする */
+            position: absolute;  /*  */
+            top: 0;
+            left: 0;
+        }
+        .slide{
+            width: 300%;
+            height: 100%;
+            display: flex;
+            transition: all 0.3s;
+        }
+        .slide div{
+            width:33.33%;
+            height: 100%;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+        }
+        .slide1{
+            transform: translateX(0);
+        }
+        .slide2{
+            transform: translateX(-33.33%);
+        }
+        .slide3{
+            transform: translateX(-66.66%);
+        }
+        .slide div:nth-of-type(1){
+            background-color: aliceblue;
+        }
+        .slide div:nth-of-type(2){
+            background-color: aqua;
+        }
+        .slide div:nth-of-type(3){
+            background-color: beige;
+        }
+        .next {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  right: 10px;
+  bottom: 50%;
+  z-index: 10;
+  cursor: pointer;
+  border-top: solid 3px #000;
+  border-right: solid 3px #000;
+  -webkit-transform: rotate(45deg) translateY(50%);
+  transform: rotate(45deg) translateY(50%);
+}
+.prev {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  left: 25px;
+  bottom: 50%;
+  z-index: 10;
+  cursor: pointer;
+  border-top: solid 3px #000;
+  border-right: solid 3px #000;
+  -webkit-transform: rotate(-135deg) translateY(-50%);
+  transform: rotate(-135deg) translateY(-50%);
+}
+/* ↓ インジケーター */
+.indicator {
+  position: absolute;
+  width: 90%;
+  bottom: 20px;
+  display: flex;
+  column-gap: 18px;
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+}
+.indicator li {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  list-style: none;
+  background-color: #fff;
+  border: 2px #000 solid;
+  cursor: pointer;
+}
+.indicator li:first-of-type {
+  background-color: #000;
+}
+.slide img{
+    width: 100%;
+    height: 100%;
+}
+
+
+    }
+
+    @media(max-width:600px){
+        body{
+           background-color: rgb(32, 32, 32);
+           display: block;
+           margin: 0;
+           text-align: center;
+        }
+        .header{
+            display: flex;
+            background-color:rgb(32, 32, 32);
+            color: white;
+            text-align: center;
+        }
+        .text1{
+            position: relative;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            left: 30px;
+            font-family:sans-serif       
+        }
+        hr{
+            border-top: 2px solid grey ;
+            margin:1px ;
+        }
+        h1{
+            color: white;
+            margin-top: 40px; 
+            text-align: center;
+        }
+        .tab1,.tab2,.tab3{
+            position: relative;
+            background-color: rgb(63, 63, 63);
+            border: 2px solid rgb(185, 179, 179);
+            width: 70%;
+            border-radius: 10px;
+            margin: 25px ;
+            padding: 20px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+            flex-shrink: 0;
+        }
+        #icon1,#icon2,#icon3{
+            
+            font-size: 70px;
+            color: rgb(105, 105, 255);
+        }
+        .tab1text,.tab2text,.tab3text{
+            font-size: 20px;
+            font-family: sans-serif;
+            font-weight: bold;
+            color: rgb(79, 138, 248);
+        }
+        .tab1explain,.tab2explain,.tab3explain{
+            font-size: 15px;
+            color: white;
+            top:20%;
+            font-family:sans-serif;
+        }
+
+        li{
+            list-style: none;
+        }
+        .slider-container {
+           position: relative;
+           overflow: hidden;
+           width: 100%;
+           height: 30vmax;
+        }
+        .slider-container::after{
+            content: "";         /* 疑似要素に必須 */
+            width: 100%;         /* 幅いっぱい */
+            height: 100%;        /* 高さいっぱい */
+            display: block;      /* 高さを指定するためにブロック要素にする */
+            background-image: linear-gradient(180deg,transparent 0 50%, rgb(32, 32, 32) 100%); /* 徐々に透明にする */
+            position: absolute;  /*  */
+            top: 0;
+            left: 0;
+        }
+        .slide{
+            width: 300%;
+            height: 100%;
+            display: flex;
+            transition: all 0.3s;
+        }
+        .slide div{
+            width:33.33%;
+            height: 100%;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+        }
+        .slide1{
+            transform: translateX(0);
+        }
+        .slide2{
+            transform: translateX(-33.33%);
+        }
+        .slide3{
+            transform: translateX(-66.66%);
+        }
+        .slide div:nth-of-type(1){
+            background-color: aliceblue;
+        }
+        .slide div:nth-of-type(2){
+            background-color: aqua;
+        }
+        .slide div:nth-of-type(3){
+            background-color: beige;
+        }
+        .next {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  right: 10px;
+  bottom: 50%;
+  z-index: 10;
+  cursor: pointer;
+  border-top: solid 3px #000;
+  border-right: solid 3px #000;
+  -webkit-transform: rotate(45deg) translateY(50%);
+  transform: rotate(45deg) translateY(50%);
+}
+.prev {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  left: 25px;
+  bottom: 50%;
+  z-index: 10;
+  cursor: pointer;
+  border-top: solid 3px #000;
+  border-right: solid 3px #000;
+  -webkit-transform: rotate(-135deg) translateY(-50%);
+  transform: rotate(-135deg) translateY(-50%);
+}
+/* ↓ インジケーター */
+.indicator {
+  position: absolute;
+  width: 75%;
+  bottom: 20px;
+  display: flex;
+  column-gap: 18px;
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+}
+.indicator li {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  list-style: none;
+  background-color: #fff;
+  border: 2px #000 solid;
+  cursor: pointer;
+}
+.indicator li:first-of-type {
+  background-color: #000;
+}
+.slide img{
+    width: 100%;
+    height: 100%;
+}
+
+.tab-container{
+    display: flex;
+    width: 100%;
+    height: 380px;
+    overflow-x: scroll;
+    
+}
+.null{
+    color: #fff;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+    }
+    </style>
+    <body>
+        <div class="header">
+            <p class="text1">Home</p>
+        </div>
+        <hr>
+        
+        <div class="slider-container">
+            <div id="slide" class="slide">
+                <div>
+                    <img src="DJI_0407.JPG">
+                </div>
+                <div>
+                    <img src="Image.jpg">
+                </div>
+                <div>
+                    <img src="result.jpg">
+                </div>
+            </div>
+            <span id="prev" class="prev"></span>
+            <span id="next" class="next"></span>
+            <ul class="indicator" id="indicator">
+                <li class="list"></li>
+                <li class="list"></li>
+                <li class="list"></li>
+            </ul>
+        </div>
+        <div>
+        <h1>Home</h1>
+        </div>
+        <div class="tab-container">
+        <div class="tab1">
+            <a href="Tab1.html"><p class="tab1text">Notifications</p></a>
+            <span class="material-icons" id="icon1">notifications_active</span>
+            <p class='tab1explain'>You can check information about disease that is detected every morning.  </p>
+
+        </div>
+        <div class="tab2">
+            <a href="Tab2.html"><p class="tab2text">Disease Detection</p></a>
+            <span class="material-icons" id="icon2">photo_library</span>
+            <p class="tab2explain">DL model detect leaf disease from images or videos.<br>Try to upload your file.</p>
+        </div>
+        <div class="tab3">
+            <a href="Tab3.html"><p class="tab3text">Spraying System</p></a>
+            <span class="material-icons" id="icon3">water_drop</span>
+            <p class="tab3explain">Spraying pesticides on apple orchard to push a button.</p>
+        </div>
+        </div>
+        <div>
+            <p class="null">--------------------------------------------------------</p>
+        </div>
+
+        <script>
+const slide = document.getElementById('slide');
+const prev = document.getElementById('prev');
+const next = document.getElementById('next');
+const indicator = document.getElementById('indicator');
+const lists = document.querySelectorAll('.list');
+const totalSlides = lists.length;
+let count = 0;
+let autoPlayInterval;
+function updateListBackground() {
+  for (let i = 0; i < lists.length; i++) {
+    lists[i].style.backgroundColor = i === count % totalSlides ? '#000' : '#fff';
+  }
+}
+function nextClick() {
+  slide.classList.remove(`slide${count % totalSlides + 1}`);
+  count++;
+  slide.classList.add(`slide${count % totalSlides + 1}`);
+  updateListBackground();
+}
+function prevClick() {
+  slide.classList.remove(`slide${count % totalSlides + 1}`);
+  count--;
+  if (count < 0) count = totalSlides - 1;
+  slide.classList.add(`slide${count % totalSlides + 1}`);
+  updateListBackground();
+}
+function startAutoPlay() {
+  autoPlayInterval = setInterval(nextClick, 3000);
+}
+function resetAutoPlayInterval() {
+  clearInterval(autoPlayInterval);
+  startAutoPlay();
+}
+next.addEventListener('click', () => {
+  nextClick();
+  resetAutoPlayInterval();
+});
+prev.addEventListener('click', () => {
+  prevClick();
+  resetAutoPlayInterval();
+});
+indicator.addEventListener('click', (event) => {
+  if (event.target.classList.contains('list')) {
+    const index = Array.from(lists).indexOf(event.target);
+    slide.classList.remove(`slide${count % totalSlides + 1}`);
+    count = index;
+    slide.classList.add(`slide${count % totalSlides + 1}`);
+    updateListBackground();
+    resetAutoPlayInterval();
+  }
+});
+startAutoPlay();
+        </script>
+        
+    </body>
+</html>
